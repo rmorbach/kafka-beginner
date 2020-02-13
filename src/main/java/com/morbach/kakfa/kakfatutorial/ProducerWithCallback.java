@@ -30,7 +30,7 @@ public class ProducerWithCallback {
 		for (int i = 0; i < 10; i++) {
 
 			// send data
-			ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>("topic", "hello " + i);
+			ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>("first_topic", "hello " + i);
 			// Sends asynchronosly
 			producer.send(producerRecord, new Callback() {
 				public void onCompletion(RecordMetadata metadata, Exception exception) {
