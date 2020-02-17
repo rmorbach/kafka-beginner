@@ -51,5 +51,6 @@
     <module>kafka-basics</module>
     <module>kafka-twitter-producer</module>
     <module>kafka-elasticsearch</module>
+    <module>kafka-streams-filter-tweets</module>
   </modules>
 </project>
