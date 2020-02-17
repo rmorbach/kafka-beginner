@@ -1,4 +1,4 @@
-package com.morbach.kakfa.kakfatutorial;
+package com.morbach.kafka.basics;
 
 import java.util.Properties;
 
@@ -11,9 +11,9 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProducerWithCallback {
+public class ProducerWithKeys {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		final Logger logger = LoggerFactory.getLogger(ProducerWithCallback.class.getName());
 
@@ -29,8 +29,16 @@ public class ProducerWithCallback {
 
 		for (int i = 0; i < 10; i++) {
 
+			String topic = "first_topic";
+			String value = "Hello " + i;
+
+			String key = "id_" + i;
+			
+			logger.info("Key " + key);
+
+
 			// send data
-			ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>("first_topic", "hello " + i);
+			ProducerRecord<String, String> producerRecord = new ProducerRecord(topic, key, value);
 			// Sends asynchronosly
 			producer.send(producerRecord, new Callback() {
 				public void onCompletion(RecordMetadata metadata, Exception exception) {
@@ -45,7 +53,7 @@ public class ProducerWithCallback {
 					}
 
 				}
-			});
+			}).get(); // Make send synchronous (BAD PRACTICE)
 		}
 		// flush data
 		producer.flush();

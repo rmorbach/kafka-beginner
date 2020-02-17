@@ -1,4 +1,4 @@
-package com.morbach.kakfa.kakfatutorial;
+package com.morbach.kafka.basics;
 
 import java.util.Properties;
 

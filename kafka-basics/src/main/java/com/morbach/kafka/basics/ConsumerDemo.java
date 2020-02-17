@@ -1,4 +1,4 @@
-package com.morbach.kakfa.kakfatutorial;
+package com.morbach.kafka.basics;
 
 import java.time.Duration;
 import java.util.Collections;
